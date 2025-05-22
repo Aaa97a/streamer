@@ -1,8 +1,16 @@
 from flask import Flask, jsonify
 from yt_dlp import YoutubeDL
 from pytube import YouTube
+import logging
 
 app = Flask(__name__)
+app.logger.addHandler(logging.StreamHandler())
+app.logger.setLevel(logging.DEBUG)
+
+@app.errorhandler(500)
+def internal_error(error):
+    app.logger.exception(error)
+    return jsonify({'error': 'Internal Server Error', 'message': str(error)}), 500
 
 @app.route('/api/v1/video/youtube/<video_id>', methods=["GET"])
 def get_video_info(video_id):
