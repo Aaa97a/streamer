@@ -56,7 +56,3 @@ def get_video_info(video_id):
     }
     
     return jsonify(response)
-
-if __name__ == '__main__':
-    # デバッグモードで起動（本番環境では設定を変更してください）
-    app.run(host="0.0.0.0", port=5000, debug=True)
