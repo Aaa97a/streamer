@@ -1,4 +1,4 @@
-uvicorn
+gunicorn
 Flask
 yt-dlp
 pytube
