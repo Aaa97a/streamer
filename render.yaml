@@ -1,8 +1,8 @@
 services:
   - type: web
-    name: youtube
+    name: your-flask-app  # 任意のサービス名に変更してください
     env: python
-    region: Oregon
     plan: free
     buildCommand: "pip install -r requirements.txt"
-    startCommand: "uvicorn --port $PORT --host 0.0.0.0 main:app"
+    startCommand: "gunicorn app:app --bind 0.0.0.0:$PORT"
+
